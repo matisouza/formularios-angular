@@ -1,0 +1,57 @@
+<h2>reactive form</h2>
+<hr>
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="guardar()">
+
+  <div>
+    <label>product</label>
+    <div>
+      <input formControlName="product">
+    </div>
+  </div>
+
+  <div>
+    <label>price</label>
+    <div>
+      <input formControlName="price">
+    </div>
+  </div>
+
+  <div>
+    <label>agregar color</label>
+    <div>
+      <div>
+        <input [formControl]="newColors" (keyup.enter)="addColor()">
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <h4>Borrar</h4>
+  <div>
+    <label> Colors </label>
+    <div formArrayName="colors">
+      <div *ngFor="let color of getColors.controls; let i = index">
+        <input [formControlName] = "i">
+        <button type="button" (click)="borrar(i)">
+          borrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <br>
+  <div>
+    <div>
+      <button type="submit" class="btn btn-success">
+        guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<br>
+<pre> {{ myForm.getRawValue() | json }} </pre>

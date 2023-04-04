@@ -1,0 +1,14 @@
+<form (ngSubmit)="guardar()" #myForms="ngForm" autocomplete="off">
+
+  <label>Email</label>
+  <input type="text" [ngModel]="initForm.email" name="email">
+
+  <label>Password</label>
+  <input type="text" [ngModel]="initForm.password" name="password">
+
+  <button type="submit">guardar</button>
+</form>
+
+<hr>
+<span>Value</span>
+<pre>{{ myForms.value | json }}</pre>
